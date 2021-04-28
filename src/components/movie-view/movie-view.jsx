@@ -1,7 +1,6 @@
 import React from 'react';
 
 export class MovieView extends React.Component {
-
   render() {
     const { movieData2, onBackClick } = this.props;
 

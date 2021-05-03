@@ -1,27 +1,35 @@
 import React from 'react';
+import axios from 'axios';
+
+import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-<<<<<<< Updated upstream
-=======
 import { RegistrationView } from '../registration-view/registration-view';
 import { Navigation } from '../nav/nav';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import './main-view.scss';
->>>>>>> Stashed changes
 
 export class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [
-        { _id: 1, Title: 'Inception', Description: 'desc1', ImagePath: '...'},
-        { _id: 2, Title: 'Shawshank', Description: 'desc2', ImagePath: '...'},
-        { _id: 3, Title: 'Gladiator', Description: 'desc3', ImagePath: '...'}
-      ],
-      selectedMovie: null
+      movies: [],
+      selectedMovie: null,
+      user: null,
+      registered: true
     };
+  }
+
+  componentDidMount(){
+    axios.get('https://filmquarry.herokuapp.com/movies').then(res => {
+      this.setState({
+        movies:res.data
+      });
+    }).catch(error => {
+      console.log(err);
+    });
   }
 
   setSelectedMovie(newSelectedMovie) {
@@ -30,13 +38,6 @@ export class MainView extends React.Component {
     });
   }
 
-<<<<<<< Updated upstream
-  render() {
-    //Object destruction - same as const movies = this.state.movies;
-    const { movies, selectedMovie } = this.state;
-  
-    if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
-=======
   onLoggedIn(user) {//newuser
     this.setState({
       //user: newuser
@@ -70,7 +71,6 @@ export class MainView extends React.Component {
     if (!user && !registered) return <RegistrationView  regData={Status => this.changeReg(Status)}/>; 
 
     if (movies.length === 0) return <div className="main-view"></div>;
->>>>>>> Stashed changes
   
     //movieData is the props to pass to the child as data
     

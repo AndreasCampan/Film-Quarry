@@ -1,12 +1,9 @@
 import React from 'react';
-<<<<<<< Updated upstream
-=======
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 import './movie-card.scss';
->>>>>>> Stashed changes
 
 export class MovieCard extends React.Component {
   render() {
@@ -28,3 +25,12 @@ export class MovieCard extends React.Component {
     );
   }
 }
+
+MovieCard.propTypes = {
+  movieData: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired
+  }).isRequired,
+  onMovieClick: PropTypes.func.isRequired
+};

@@ -4,6 +4,20 @@
   color: #000000;
   font-size: 1.2em;
 }
+.size {
+  max-width: 250px;
+}
+
+.cent {
+  text-align: center;
+}
+.cent {
+  text-align: center;
+}
+
+.poster {
+  width: 350px;
+}
 Form {
   max-width: 400px;
   min-width: 260px;
@@ -39,20 +53,6 @@ Form {
   .title {
     font-size: 2em;
   }
-}
-.size {
-  max-width: 250px;
-}
-
-.cent {
-  text-align: center;
-}
-.cent {
-  text-align: center;
-}
-
-.poster {
-  width: 350px;
 }
 Form {
   max-width: 400px;

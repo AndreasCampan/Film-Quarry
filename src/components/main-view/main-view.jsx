@@ -1,6 +1,15 @@
 import React from 'react';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+<<<<<<< Updated upstream
+=======
+import { RegistrationView } from '../registration-view/registration-view';
+import { Navigation } from '../nav/nav';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+import './main-view.scss';
+>>>>>>> Stashed changes
 
 export class MainView extends React.Component {
   constructor() {
@@ -21,23 +30,68 @@ export class MainView extends React.Component {
     });
   }
 
+<<<<<<< Updated upstream
   render() {
     //Object destruction - same as const movies = this.state.movies;
     const { movies, selectedMovie } = this.state;
   
     if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
+=======
+  onLoggedIn(user) {//newuser
+    this.setState({
+      //user: newuser
+      user
+    });
+  }
+
+  changeReg(regStatus) {
+    this.setState({
+      registered: regStatus
+    });
+  }
+
+  signOut(signState) {
+    this.setState({
+      user: signState
+    });
+  }
+
+  render() {
+    //Object destruction - same as const movies = this.state.movies;
+    const { movies, selectedMovie, user, registered } = this.state;
+    
+    if (!user && registered) return (
+      <Row>
+        <Col md={12}>
+        <LoginView regData={Status => this.changeReg(Status)} loggingIn={user => this.onLoggedIn(user)} />
+        </Col>
+      </Row>
+      )
+    if (!user && !registered) return <RegistrationView  regData={Status => this.changeReg(Status)}/>; 
+
+    if (movies.length === 0) return <div className="main-view"></div>;
+>>>>>>> Stashed changes
   
     //movieData is the props to pass to the child as data
     
     return (
-      <div className="main-view">
+      <>
+      <Navigation onSignOut={signState => { this.signOut(signState); }} />
+      <Row className="main-view justify-content-center">
         {selectedMovie
-          ? <MovieView movieData2={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+          ? (
+            <Col md={8}>
+              <MovieView movieData2={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+            </Col>
+          )
           : movies.map(movie => (
-            <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
+            <Col xs={12} sm={6} md={4} lg={4}>
+              <MovieCard key={movie._id} movieData={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+            </Col>
           ))
         }
-      </div>
+      </Row>
+    </>
     );
   }
 }

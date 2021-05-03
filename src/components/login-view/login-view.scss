@@ -1,0 +1,37 @@
+Form {
+  max-width: 400px;
+  min-width: 260px;
+  width: 80vw;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  min-width: 260px;
+  font-weight: 700;
+  font-size: 3em;
+  margin-bottom: 1em;
+  color: #17A2B8;
+}
+
+.middle {
+  text-align: center;
+}
+
+@media all and (max-width: 400px){
+  .title {
+    font-size: 2.3em;
+  }
+}
+
+@media all and (max-width: 320px){
+  .title {
+    font-size: 2em;
+  }
+}

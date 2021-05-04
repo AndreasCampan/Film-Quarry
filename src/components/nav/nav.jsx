@@ -1,5 +1,6 @@
 import React from 'react';
 import {Nav, Navbar} from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 import './nav.scss';
 
@@ -23,3 +24,7 @@ render() {
     );
   }
 }
+
+Navigation.propTypes = {
+  onSignOut: PropTypes.func.isRequired
+};

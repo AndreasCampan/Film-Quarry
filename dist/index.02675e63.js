@@ -26698,7 +26698,7 @@ try {
       const {movieData, onMovieClick} = this.props;
       return (
         /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapCardDefault.default, {
-          className: "card my-4",
+          className: "card my-4 cardbox",
           __self: this,
           __source: {
             fileName: _jsxFileName,
@@ -26724,6 +26724,7 @@ try {
             columnNumber: 9
           }
         })), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapCardDefault.default.Body, {
+          className: "card-space",
           __self: this,
           __source: {
             fileName: _jsxFileName,

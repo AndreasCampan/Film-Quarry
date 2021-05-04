@@ -10,11 +10,11 @@ export class MovieCard extends React.Component {
     const { movieData, onMovieClick } = this.props;
 
     return (
-      <Card className="card my-4">
+      <Card className="card my-4 cardbox">
         <span className="cent">
         <Card.Img className="cardimg size" variant="top" src={movieData.ImagePath} />
         </span>
-        <Card.Body>
+        <Card.Body className="card-space">
           <Card.Title className="cent" >{movieData.Title}</Card.Title>
           <Card.Text>{movieData.Description.slice(0, 90)} ...'</Card.Text>
           <div className="cent">

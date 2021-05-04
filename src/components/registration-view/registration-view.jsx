@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 export function RegistrationView() {
 
@@ -39,3 +40,7 @@ export function RegistrationView() {
     </>
   );
 }
+
+RegistrationView.propTypes = {
+  regData: PropTypes.func.isRequired
+};

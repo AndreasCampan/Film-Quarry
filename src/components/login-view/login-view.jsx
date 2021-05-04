@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RegistrationView } from '../registration-view/registration-view';
+import PropTypes from 'prop-types';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -34,3 +34,8 @@ export function LoginView(props) {
     </>
   );
 }
+
+LoginView.propTypes = {
+  regData: PropTypes.func.isRequired,
+  loggingIn: PropTypes.func.isRequired
+};

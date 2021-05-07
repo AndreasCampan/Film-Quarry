@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
@@ -9,11 +10,25 @@ export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
 
+  function errorMsg() {
+    console.log('no such user');
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
     /* Send a request to the server for authentication */
-    props.loggingIn(username);
+    axios.post('https://filmquarry.herokuapp.com/login', {
+      Username: username,
+      Password: password
+    })
+    .then(
+    res => {
+      const data = res.data;
+      props.loggingIn(data);
+    })
+    .catch(() => {
+      errorMsg();
+    });
   };
 
   const handleRegistration = () => {
@@ -24,7 +39,7 @@ export function LoginView(props) {
   return (
     <div className="center">
       <h1 className="title">Film Quarry</h1>
-      <Form>
+      <Form noValidate>
         <Form.Group controlId="formUsername">
           <Form.Label>Username:</Form.Label>
           <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
@@ -39,6 +54,10 @@ export function LoginView(props) {
           <Button className="m-3" variant="info" type="link" onClick={handleRegistration}>Register</Button>
         </div>
       </Form>
+      <p>User for testing.<br/>
+        Username: testuser<br/>
+        Password: test123
+      </p>
     </div>
   );
 }

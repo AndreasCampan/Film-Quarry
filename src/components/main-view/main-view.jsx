@@ -4,6 +4,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { LoginView } from '../login-view/login-view';
+import { ProfileView } from '../profile-view/profile-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
@@ -20,26 +21,57 @@ export class MainView extends React.Component {
     super();
     this.state = {
       movies: [],
+      token: null,
       isLoaded: false,
+      isLoaded2: false,
       selectedMovie: null,
       user: null,
-      registered: true
+      userData: null
     };
   }
-
+  
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
+    let userToken = localStorage.getItem('user');
     if (accessToken !== null) {
       this.setState({
-        user: localStorage.getItem('user')
+        user: localStorage.getItem('user'),
+        token: localStorage.getItem('token')
       });
       this.getMovies(accessToken);
+      this.getAcc(accessToken, userToken);
     }
+  }
+
+  newUser(newData) {
+    localStorage.setItem('user', newData.Username);
+    this.setState({
+      userData: newData,
+      user: newData.Username
+    });
   }
 
   setSelectedMovie(newSelectedMovie) {
     this.setState({
       selectedMovie: newSelectedMovie
+    });
+  }
+
+  getAcc(token, user) {
+    axios.get(`https://filmquarry.herokuapp.com/users/${user}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      console.log('Success in the main-view');
+      console.log(response);
+      console.log(user);
+      // Assign the result to the state
+      this.setState({
+        userData: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
     });
   }
 
@@ -63,16 +95,9 @@ export class MainView extends React.Component {
     this.setState({
       user: authData.user.Username
     });
-
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
-  }
-
-  changeReg(regStatus) {
-    this.setState({
-      registered: regStatus
-    });
   }
 
   signOut(signState) {
@@ -91,57 +116,121 @@ export class MainView extends React.Component {
     }, 1400);
   }
 
+  loading2(){
+    setTimeout(() => {
+      this.setState({
+        isLoaded2: true
+      })
+    }, 1000);
+  }
+
+
   render() {
     //Object destruction - same as const movies = this.state.movies;
-    const { movies, user, registered, isLoaded } = this.state;
-    
-    if (!user && registered) return (
-      <Row>
-        <Col md={12}>
-        <LoginView regData={Status => this.changeReg(Status)} loggingIn={user => this.onLoggedIn(user)} />
-        </Col>
-      </Row>
-      )
+    const { movies, user, isLoaded, isLoaded2, token, userData} = this.state;
 
-    if (!user && !registered) return <RegistrationView  regData={Status => this.changeReg(Status)}/>; 
-
-   
-
-    if (movies.length === 0 || !isLoaded) return (
-    <>
-    <Navigation onSignOut={signState => { this.signOut(signState); }} />
-    <div className="loading">Loading<span className="spinner"></span></div>
-    {this.loading()}
-    </>
-   
-    )
-    //movieData is the props to pass to the child as data
     return (
       <Router>
-        <Navigation onSignOut={signState => { this.signOut(signState); }} />
         <Row className="main-view justify-content-center">
-          <Route exact path="/" render={() => {
-            return movies.map(movie => (
-              <Col xs={12} sm={6} md={4} lg={4} key={movie._id}>
-                <MovieCard movieData={movie} />
-              </Col>
-            ))
+          <Route exact path="/" render={({ history }) => {
+            if (!user) return (
+                <Col md={12}>
+                  <LoginView loggingIn={user => this.onLoggedIn(user)} />
+                </Col>
+            )
+
+            if (movies.length === 0 || !isLoaded) return (
+              <>
+                <Navigation user={user} history={history} onSignOut={signState => { this.signOut(signState); }} />
+                <div className="loading">Loading<span className="spinner"></span></div>
+                {this.loading()}
+              </>
+            )
+              
+            return (
+              <>
+                <Navigation user={user} history={history} onSignOut={signState => { this.signOut(signState); }} />
+                {movies.map(movie => (
+                  <Col xs={12} sm={6} md={4} lg={4} key={movie._id}>
+                    <MovieCard movieData={movie} onSignOut={signState => { this.signOut(signState); }}/>
+                  </Col>
+                ))}
+              </>
+            )
           }} />
-          <Route path="/movies/:movieId" render={({ match }) => {
-            return <Col md={8}>
-              <MovieView movieData={movies.find(m => m._id === match.params.movieId)}/>
+
+          <Route path="/register" render={() => {
+            return <Col>
+              <RegistrationView/>
             </Col>
-          }} />    
+          }} />
+          
+          <Route path="/movies/:movieId" render={({ match, history }) => {
+            if (!user) return <Col>
+              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+            </Col>
+            return (
+              <>
+                <Navigation user={user} history={history} onSignOut={signState => { this.signOut(signState); }} />
+                <Col md={8}>
+                  <MovieView movieData={movies.find(m => m._id === match.params.movieId)} onSignOut={signState => { this.signOut(signState); }}/>
+                </Col>
+                </>
+              )
+          }} />
+           
           <Route path="/directors/:name" render={({ match, history }) => {
-            return <Col md={8}>
-              <DirectorView directorData={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()}/>
+            if (!user) return <Col>
+              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
+            return (
+              <>
+                <Navigation user={user}  history={history} onSignOut={signState => { this.signOut(signState); }} />
+                <Col md={8}>
+                  <DirectorView directorData={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} onSignOut={signState => { this.signOut(signState); }}/>
+                </Col>
+                </>
+            )
           }} /> 
+
           <Route path="/genre/:name" render={({ match, history }) => {
-            return <Col md={8}>
-              <GenreView genreData={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()}/>
+            if (!user) return <Col>
+              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
+            return (
+              <>
+                <Navigation user={user} history={history} onSignOut={signState => { this.signOut(signState); }} />
+                <Col md={8}>
+                  <GenreView genreData={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} onSignOut={signState => { this.signOut(signState); }}/>
+                </Col>
+              </>
+            )
           }} /> 
+
+          <Route path={`/users/${user}`} render={({ history }) => {
+            if (!user) return <Col>
+              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+            </Col>
+
+            if (!userData || !isLoaded2) {
+              return (
+                <>
+                  <Navigation user={user} history={history} onSignOut={signState => { this.signOut(signState); }} />
+                  <div className="loading">Loading<span className="spinner"></span></div>
+                  {this.loading2()}
+                </>
+              )
+            }
+            return (
+              <>
+                <Navigation user={user} history={history} onSignOut={signState => { this.signOut(signState); }} />
+                <Col md={8}>
+                  <ProfileView user={user} token={token} userData={userData} onNewUser={newData => { this.newUser(newData); }}/>
+                </Col>
+                </>
+              )
+          }} />   
+
         </Row>
       </Router>
     );

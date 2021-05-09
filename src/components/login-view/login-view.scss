@@ -1,7 +1,15 @@
 Form {
   max-width: 400px;
-  min-width: 260px;
-  width: 80vw;
+  min-width: 270px;
+  width: 95vw;
+  padding: 0 2%;
+}
+
+.err {
+  color: rgb(255, 0, 0);
+  font-size: 0.85em;
+  height: 40px;
+  text-align: center;
 }
 
 .center {
@@ -21,9 +29,7 @@ Form {
   text-align: center;
 }
 
-.middle {
-  text-align: center;
-}
+
 
 @media all and (max-width: 400px){
   .title {
@@ -34,5 +40,12 @@ Form {
 @media all and (max-width: 320px){
   .title {
     font-size: 2em;
+  }
+}
+
+@media all and (max-width: 320px){
+  Form {
+    padding: 0;
+    border: none;
   }
 }

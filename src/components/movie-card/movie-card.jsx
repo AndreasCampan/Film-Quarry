@@ -11,7 +11,7 @@ export class MovieCard extends React.Component {
     const { movieData } = this.props;
 
     return (
-      <Card className="card my-4 cardbox">
+      <Card className="card mb-4 cardbox">
         <span className="cent">
         <Card.Img className="cardimg size" variant="top" src={movieData.ImagePath} />
         </span>

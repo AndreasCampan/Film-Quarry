@@ -10,7 +10,6 @@ export class MovieView extends React.Component {
     const { movieData } = this.props;
 
     return (
-
       <div className="movie-view">
         <div className="movie-poster cent">
           <img className="poster" src={movieData.ImagePath} />

@@ -10,6 +10,7 @@
 
 .navsize2 {
   font-size: 1.2em;
+  width: fit-content;
 }
 
 .hover:hover {
@@ -27,6 +28,7 @@
 }
 
 .ani::after {/* Navigation link transition*/
+  transform: scaleX(0);  
   transform-origin:   100% 0%;
 }
 
@@ -42,8 +44,5 @@
   
   .navsize2 {
     font-size: 0.9em;
-  }
-  .hover:after {
-    width: 80px;
   }
 }

@@ -38,8 +38,8 @@ export class MainView extends React.Component {
         user: localStorage.getItem('user'),
         token: localStorage.getItem('token')
       });
-      this.getMovies(accessToken);
       this.getAcc(accessToken, userToken);
+      this.getMovies(accessToken);
     }
   }
 
@@ -62,10 +62,7 @@ export class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
-      console.log('Success in the main-view');
-      console.log(response);
-      console.log(user);
-      // Assign the result to the state
+      console.log('Success with getAcc');
       this.setState({
         userData: response.data
       });
@@ -93,10 +90,12 @@ export class MainView extends React.Component {
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
-      user: authData.user.Username
+      user: authData.user.Username,
+      token: authData.token
     });
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
+    this.getAcc(authData.token, authData.user.Username);
     this.getMovies(authData.token);
   }
 
@@ -104,7 +103,9 @@ export class MainView extends React.Component {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.setState({
-      user: signState
+      user: signState,
+      token: null,
+      userData: null
     });
   }
 
@@ -118,10 +119,11 @@ export class MainView extends React.Component {
 
   loading2(){
     setTimeout(() => {
+      console.log('loading2 function');
       this.setState({
         isLoaded2: true
       })
-    }, 1000);
+    }, 3000);
   }
 
 
@@ -132,7 +134,7 @@ export class MainView extends React.Component {
     return (
       <Router>
         <Row className="main-view justify-content-center">
-          <Route exact path="/" render={({ history }) => {
+          <Route exact path={["/", "/movies"]} render={({ history }) => {
             if (!user) return (
                 <Col md={12}>
                   <LoginView loggingIn={user => this.onLoggedIn(user)} />
@@ -212,7 +214,7 @@ export class MainView extends React.Component {
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
 
-            if (!userData || !isLoaded2) {
+            if (!userData && !isLoaded2) {
               return (
                 <>
                   <Navigation user={user} history={history} onSignOut={signState => { this.signOut(signState); }} />

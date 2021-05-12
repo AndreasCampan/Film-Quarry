@@ -51,6 +51,12 @@ export class MainView extends React.Component {
     });
   }
 
+  newFav(newData) {
+    this.setState({
+      userData: newData
+    });
+  }
+
   setSelectedMovie(newSelectedMovie) {
     this.setState({
       selectedMovie: newSelectedMovie
@@ -119,7 +125,6 @@ export class MainView extends React.Component {
 
   loading2(){
     setTimeout(() => {
-      console.log('loading2 function');
       this.setState({
         isLoaded2: true
       })
@@ -154,7 +159,7 @@ export class MainView extends React.Component {
                 <Navigation user={user} history={history} onSignOut={signState => { this.signOut(signState); }} />
                 {movies.map(movie => (
                   <Col xs={12} sm={6} md={4} lg={4} key={movie._id}>
-                    <MovieCard movieData={movie} onSignOut={signState => { this.signOut(signState); }}/>
+                    <MovieCard movieData={movie} userData={userData} user={user} token={token}  onNewFav={newData => { this.newFav(newData); }} onSignOut={signState => { this.signOut(signState); }}/>
                   </Col>
                 ))}
               </>
@@ -227,7 +232,7 @@ export class MainView extends React.Component {
               <>
                 <Navigation user={user} history={history} onSignOut={signState => { this.signOut(signState); }} />
                 <Col md={8}>
-                  <ProfileView user={user} token={token} userData={userData} onNewUser={newData => { this.newUser(newData); }}/>
+                  <ProfileView user={user} token={token} history={history} userData={userData} onNewUser={newData => { this.newUser(newData); }} onSignOut={signState => { this.signOut(signState); }}/>
                 </Col>
                 </>
               )

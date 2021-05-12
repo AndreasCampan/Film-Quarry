@@ -11,7 +11,7 @@ render() {
 
   return (
     <>
-      <Navbar className="font-weight-bold" fixed="top" expand="md" bg="info" variant="dark">
+      <Navbar className="font-weight-bold" fixed="top" expand="lg" bg="info" variant="dark">
         <Navbar.Brand><span className="navsize1">Film Quarry</span></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">

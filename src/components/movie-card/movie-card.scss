@@ -34,8 +34,20 @@
   background-image: url(../../../images/favourite-icon.png);
   width: 40px;
   height: 38px;
+  animation: fav2 1s ease;
 }
 
+@keyframes fav2 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .favourites:hover {
   cursor: pointer;
   display: inline-block;
@@ -53,6 +65,19 @@
   background-image: url(../../../images/favourite-icon-faved.png);
   width: 40px;
   height: 38px;
+  animation: fav 1s ease;
+}
+
+@keyframes fav {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .favourites-active:hover {

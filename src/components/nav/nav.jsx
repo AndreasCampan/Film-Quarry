@@ -20,7 +20,7 @@ render() {
               <span className="hover ani">Movies</span>
             </Nav.Link>
 
-            <Nav.Link className="text-white mx-2" href="#"><span className="hover ani">My Favs</span></Nav.Link>
+            {/* <Nav.Link className="text-white mx-2" href="#"><span className="hover ani">My Favs</span></Nav.Link> */}
 
             <Nav.Link className="text-white mx-2" onClick={() => { history.push(`/users/${user}`); }}>
               <span className="hover ani">{`${user}`}</span>

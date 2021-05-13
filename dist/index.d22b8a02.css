@@ -162,6 +162,19 @@ input:focus {
   background-image: url(favourite-icon.1099f380.png);
   width: 40px;
   height: 38px;
+  animation: fav2 1s ease;
+}
+
+@keyframes fav2 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .favourites:hover {
@@ -181,6 +194,19 @@ input:focus {
   background-image: url(favourite-icon-faved.2b49141d.png);
   width: 40px;
   height: 38px;
+  animation: fav 1s ease;
+}
+
+@keyframes fav {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .favourites-active:hover {

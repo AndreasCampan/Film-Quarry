@@ -51,12 +51,6 @@ export class MainView extends React.Component {
     });
   }
 
-  newFav(newData) {
-    this.setState({
-      userData: newData
-    });
-  }
-
   setSelectedMovie(newSelectedMovie) {
     this.setState({
       selectedMovie: newSelectedMovie
@@ -154,12 +148,12 @@ export class MainView extends React.Component {
               </>
             )
               
-            return (
+            if (userData) return (
               <>
                 <Navigation user={user} history={history} onSignOut={signState => { this.signOut(signState); }} />
                 {movies.map(movie => (
                   <Col xs={12} sm={6} md={4} lg={4} key={movie._id}>
-                    <MovieCard movieData={movie} userData={userData} user={user} token={token}  onNewFav={newData => { this.newFav(newData); }} onSignOut={signState => { this.signOut(signState); }}/>
+                    <MovieCard movieData={movie} userData={userData} user={user} token={token}  onGetAcc={() => { this.getAcc(token, user); }} onSignOut={sgnState => { this.signOut(signState); }}/>
                   </Col>
                 ))}
               </>

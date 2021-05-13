@@ -128,7 +128,7 @@ export class MainView extends React.Component {
 
   render() {
     //Object destruction - same as const movies = this.state.movies;
-    const { movies, user, isLoaded, isLoaded2, token, userData} = this.state;
+    const { movies, user, isLoaded, isLoaded2, token, userData } = this.state;
 
     return (
       <Router>

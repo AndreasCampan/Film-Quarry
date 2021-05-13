@@ -10,7 +10,7 @@ import './movie-card.scss';
 export class MovieCard extends React.Component {
 
   render() {
-    const { userData, movieData, user, token, onGetAcc} = this.props;    
+    const { userData, movieData, user, token, onGetAcc } = this.props;    
 
     function toggleHeart2(userData, id) {
       if(userData.movieFav.includes(id)){

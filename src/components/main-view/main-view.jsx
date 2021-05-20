@@ -1,11 +1,17 @@
 import React from 'react';
 import axios from 'axios';
 
+import { connect } from 'react-redux';
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import { setMovies } from '../../actions/actions';
+
+import MoviesList from '../movies-list/movies-list';
 
 import { LoginView } from '../login-view/login-view';
 import { ProfileView } from '../profile-view/profile-view';
-import { MovieCard } from '../movie-card/movie-card';
+// import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
@@ -16,11 +22,11 @@ import Col from 'react-bootstrap/Col';
 
 import './main-view.scss';
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [],
+      visibilityFilter: '',
       token: null,
       isLoaded: false,
       isLoaded2: false,
@@ -77,10 +83,7 @@ export class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
-      // Assign the result to the state
-      this.setState({
-        movies: response.data
-      });
+      this.props.setMovies(response.data);
     })
     .catch(function (error) {
       console.log(error);
@@ -127,8 +130,9 @@ export class MainView extends React.Component {
 
 
   render() {
+    let { movies } = this.props;
     //Object destruction - same as const movies = this.state.movies;
-    const { movies, user, isLoaded, isLoaded2, token, userData } = this.state;
+    let { user, isLoaded, isLoaded2, token, userData } = this.state;
 
     return (
       <Router>
@@ -151,11 +155,7 @@ export class MainView extends React.Component {
             if (userData) return (
               <>
                 <Navigation user={user} history={history} onSignOut={signState => { this.signOut(signState); }} />
-                {movies.map(movie => (
-                  <Col xs={12} sm={6} md={4} lg={4} key={movie._id}>
-                    <MovieCard movieData={movie} userData={userData} user={user} token={token}  onGetAcc={() => { this.getAcc(token, user); }} onSignOut={sgnState => { this.signOut(signState); }}/>
-                  </Col>
-                ))}
+                <MoviesList movies={movies} userData={userData} user={user} token={token} onGetAcc={() => { this.getAcc(token, user); }} />;
               </>
             )
           }} />
@@ -237,3 +237,9 @@ export class MainView extends React.Component {
     );
   }
 }
+
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+export default connect(mapStateToProps, { setMovies })(MainView);

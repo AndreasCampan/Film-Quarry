@@ -11,11 +11,14 @@ render() {
 
   return (
     <>
-      <Navbar className="font-weight-bold" fixed="top" expand="lg" bg="info" variant="dark">
-        <Navbar.Brand> 
-          <span className="navsize1">Film Quarry</span>
-        </Navbar.Brand>
-        <div className="logo"></div>
+      <Navbar className="font-weight-bold" fixed="top" expand="md" bg="info" variant="dark">
+        <div className="left">
+          <Nav.Link className="logo mr-3" href="https://andreascampan.github.io/AC-Portfolio"></Nav.Link>
+          <Navbar.Brand> 
+            <span className="navsize1">Film Quarry</span>
+          </Navbar.Brand>
+        </div>
+
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
           <Nav className="navsize2">

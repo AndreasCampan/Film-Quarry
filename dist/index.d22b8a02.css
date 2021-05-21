@@ -20,6 +20,7 @@ Form {
 
 .logo {
   display: inline-block;
+  position: relative;
   background-image: url("logo.2d5f43f9.png");
   background-repeat: none;
   background-size: 100%;
@@ -259,6 +260,13 @@ input:focus {
   display: block;
   width: 100%;
   margin: 50px;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navsize1 {

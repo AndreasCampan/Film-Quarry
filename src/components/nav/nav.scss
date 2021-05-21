@@ -4,6 +4,12 @@
   margin: 50px;
 }
 
+.left {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+}
 .navsize1 {
   font-size: 1.7em;
 }

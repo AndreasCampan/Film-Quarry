@@ -133,6 +133,7 @@ class MainView extends React.Component {
     //Object destruction - same as const movies = this.state.movies;
     let { user, isLoaded, isLoaded2, token, userData } = this.state;
 
+    console.log(this.props);
     return (
       <Router>
         <Row className="main-view justify-content-center">

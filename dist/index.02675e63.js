@@ -26626,12 +26626,13 @@ try {
       let {movies} = this.props;
       // Object destruction - same as const movies = this.state.movies;
       let {user, isLoaded, isLoaded2, token, userData} = this.state;
+      console.log(this.props);
       return (
         /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 137,
+            lineNumber: 138,
             columnNumber: 7
           }
         }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapRowDefault.default, {
@@ -26639,7 +26640,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 138,
+            lineNumber: 139,
             columnNumber: 9
           }
         }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -26652,7 +26653,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 141,
+                  lineNumber: 142,
                   columnNumber: 17
                 }
               }, /*#__PURE__*/_reactDefault.default.createElement(_loginViewLoginView.LoginView, {
@@ -26660,7 +26661,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 142,
+                  lineNumber: 143,
                   columnNumber: 19
                 }
               }))
@@ -26675,7 +26676,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 148,
+                  lineNumber: 149,
                   columnNumber: 17
                 }
               }), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -26683,7 +26684,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 149,
+                  lineNumber: 150,
                   columnNumber: 17
                 }
               }, "Loading", /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -26691,7 +26692,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 149,
+                  lineNumber: 150,
                   columnNumber: 49
                 }
               })), this.loading())
@@ -26706,7 +26707,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 156,
+                  lineNumber: 157,
                   columnNumber: 17
                 }
               }), /*#__PURE__*/_reactDefault.default.createElement(_moviesListMoviesListDefault.default, {
@@ -26720,7 +26721,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 157,
+                  lineNumber: 158,
                   columnNumber: 17
                 }
               }))
@@ -26729,7 +26730,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 139,
+            lineNumber: 140,
             columnNumber: 11
           }
         }), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -26740,14 +26741,14 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 163,
+                  lineNumber: 164,
                   columnNumber: 20
                 }
               }, /*#__PURE__*/_reactDefault.default.createElement(_registrationViewRegistrationView.RegistrationView, {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 164,
+                  lineNumber: 165,
                   columnNumber: 15
                 }
               }))
@@ -26756,7 +26757,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 162,
+            lineNumber: 163,
             columnNumber: 11
           }
         }), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -26767,7 +26768,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 169,
+                  lineNumber: 170,
                   columnNumber: 31
                 }
               }, /*#__PURE__*/_reactDefault.default.createElement(_loginViewLoginView.LoginView, {
@@ -26775,7 +26776,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 170,
+                  lineNumber: 171,
                   columnNumber: 15
                 }
               }))
@@ -26790,7 +26791,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 174,
+                  lineNumber: 175,
                   columnNumber: 17
                 }
               }), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapColDefault.default, {
@@ -26798,7 +26799,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 175,
+                  lineNumber: 176,
                   columnNumber: 17
                 }
               }, /*#__PURE__*/_reactDefault.default.createElement(_movieViewMovieView.MovieView, {
@@ -26809,7 +26810,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 176,
+                  lineNumber: 177,
                   columnNumber: 19
                 }
               })))
@@ -26818,7 +26819,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 168,
+            lineNumber: 169,
             columnNumber: 11
           }
         }), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -26829,7 +26830,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 183,
+                  lineNumber: 184,
                   columnNumber: 31
                 }
               }, /*#__PURE__*/_reactDefault.default.createElement(_loginViewLoginView.LoginView, {
@@ -26837,7 +26838,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 184,
+                  lineNumber: 185,
                   columnNumber: 15
                 }
               }))
@@ -26852,7 +26853,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 188,
+                  lineNumber: 189,
                   columnNumber: 17
                 }
               }), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapColDefault.default, {
@@ -26860,7 +26861,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 189,
+                  lineNumber: 190,
                   columnNumber: 17
                 }
               }, /*#__PURE__*/_reactDefault.default.createElement(_directorViewDirectorView.DirectorView, {
@@ -26872,7 +26873,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 190,
+                  lineNumber: 191,
                   columnNumber: 19
                 }
               })))
@@ -26881,7 +26882,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 182,
+            lineNumber: 183,
             columnNumber: 11
           }
         }), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -26892,7 +26893,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 197,
+                  lineNumber: 198,
                   columnNumber: 31
                 }
               }, /*#__PURE__*/_reactDefault.default.createElement(_loginViewLoginView.LoginView, {
@@ -26900,7 +26901,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 198,
+                  lineNumber: 199,
                   columnNumber: 15
                 }
               }))
@@ -26915,7 +26916,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 202,
+                  lineNumber: 203,
                   columnNumber: 17
                 }
               }), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapColDefault.default, {
@@ -26923,7 +26924,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 203,
+                  lineNumber: 204,
                   columnNumber: 17
                 }
               }, /*#__PURE__*/_reactDefault.default.createElement(_genreViewGenreView.GenreView, {
@@ -26935,7 +26936,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 204,
+                  lineNumber: 205,
                   columnNumber: 19
                 }
               })))
@@ -26944,7 +26945,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 196,
+            lineNumber: 197,
             columnNumber: 11
           }
         }), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -26955,7 +26956,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 211,
+                  lineNumber: 212,
                   columnNumber: 31
                 }
               }, /*#__PURE__*/_reactDefault.default.createElement(_loginViewLoginView.LoginView, {
@@ -26963,7 +26964,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 212,
+                  lineNumber: 213,
                   columnNumber: 15
                 }
               }))
@@ -26979,7 +26980,7 @@ try {
                   __self: this,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 218,
+                    lineNumber: 219,
                     columnNumber: 19
                   }
                 }), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -26987,7 +26988,7 @@ try {
                   __self: this,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 219,
+                    lineNumber: 220,
                     columnNumber: 19
                   }
                 }, "Loading", /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -26995,7 +26996,7 @@ try {
                   __self: this,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 219,
+                    lineNumber: 220,
                     columnNumber: 51
                   }
                 })), this.loading2())
@@ -27011,7 +27012,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 226,
+                  lineNumber: 227,
                   columnNumber: 17
                 }
               }), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapColDefault.default, {
@@ -27019,7 +27020,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 227,
+                  lineNumber: 228,
                   columnNumber: 17
                 }
               }, /*#__PURE__*/_reactDefault.default.createElement(_profileViewProfileView.ProfileView, {
@@ -27036,7 +27037,7 @@ try {
                 __self: this,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 228,
+                  lineNumber: 229,
                   columnNumber: 19
                 }
               })))
@@ -27045,7 +27046,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 210,
+            lineNumber: 211,
             columnNumber: 11
           }
         })))
@@ -38880,7 +38881,7 @@ try {
         /*#__PURE__*/_reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrap.Navbar, {
           className: "font-weight-bold",
           fixed: "top",
-          expand: "lg",
+          expand: "md",
           bg: "info",
           variant: "dark",
           __self: this,
@@ -38889,35 +38890,44 @@ try {
             lineNumber: 14,
             columnNumber: 7
           }
-        }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrap.Navbar.Brand, {
+        }, /*#__PURE__*/_reactDefault.default.createElement("div", {
+          className: "left",
           __self: this,
           __source: {
             fileName: _jsxFileName,
             lineNumber: 15,
             columnNumber: 9
           }
-        }, /*#__PURE__*/_reactDefault.default.createElement("span", {
-          className: "navsize1",
+        }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
+          className: "logo mr-3",
+          href: "https://andreascampan.github.io/AC-Portfolio",
           __self: this,
           __source: {
             fileName: _jsxFileName,
             lineNumber: 16,
             columnNumber: 11
           }
-        }, "Film Quarry")), /*#__PURE__*/_reactDefault.default.createElement("div", {
-          className: "logo",
+        }), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrap.Navbar.Brand, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 17,
+            columnNumber: 11
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("span", {
+          className: "navsize1",
           __self: this,
           __source: {
             fileName: _jsxFileName,
             lineNumber: 18,
-            columnNumber: 9
+            columnNumber: 13
           }
-        }), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrap.Navbar.Toggle, {
+        }, "Film Quarry"))), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrap.Navbar.Toggle, {
           "aria-controls": "responsive-navbar-nav",
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 19,
+            lineNumber: 22,
             columnNumber: 9
           }
         }), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrap.Navbar.Collapse, {
@@ -38926,7 +38936,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 20,
+            lineNumber: 23,
             columnNumber: 9
           }
         }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrap.Nav, {
@@ -38934,7 +38944,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 21,
+            lineNumber: 24,
             columnNumber: 11
           }
         }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
@@ -38945,7 +38955,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 22,
+            lineNumber: 25,
             columnNumber: 13
           }
         }, /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -38953,7 +38963,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 23,
+            lineNumber: 26,
             columnNumber: 15
           }
         }, "Movies")), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
@@ -38964,7 +38974,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 28,
+            lineNumber: 31,
             columnNumber: 13
           }
         }, /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -38972,7 +38982,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 29,
+            lineNumber: 32,
             columnNumber: 15
           }
         }, `${user}`)), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
@@ -38984,7 +38994,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 32,
+            lineNumber: 35,
             columnNumber: 13
           }
         }, /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -38992,7 +39002,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 32,
+            lineNumber: 35,
             columnNumber: 107
           }
         }, "Sign Out"))))), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -39000,7 +39010,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 36,
+            lineNumber: 39,
             columnNumber: 7
           }
         }))

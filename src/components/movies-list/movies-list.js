@@ -31,7 +31,7 @@ function MoviesList(props) {
         <MovieCard movieData={m} userData={userData} user={user} token={token} onGetAcc={onGetAcc} />
       </Col>
     ))}
-  </>;
+  </>
 }
 
 export default connect(mapStateToProps)(MoviesList);

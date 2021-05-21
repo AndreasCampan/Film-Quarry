@@ -32,7 +32,8 @@ class MainView extends React.Component {
       isLoaded2: false,
       selectedMovie: null,
       user: null,
-      userData: null
+      userData: null,
+      modalShow: false
     };
   }
   
@@ -155,7 +156,7 @@ class MainView extends React.Component {
             if (userData) return (
               <>
                 <Navigation user={user} history={history} onSignOut={signState => { this.signOut(signState); }} />
-                <MoviesList movies={movies} userData={userData} user={user} token={token} onGetAcc={() => { this.getAcc(token, user); }} />;
+                <MoviesList movies={movies} userData={userData} user={user} token={token} onGetAcc={() => { this.getAcc(token, user); }} />
               </>
             )
           }} />

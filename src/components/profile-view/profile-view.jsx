@@ -1,15 +1,24 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import PropTypes from 'prop-types';
+
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { ConfirmDel } from '../delete-modal/delete-modal';
 
 import './profile-view.scss';
 
 export class ProfileView extends React.Component {
 
+  constructor() {
+    super();
+    this.state = {
+      date: new Date().getFullYear()
+    };
+  }
+
   render() {
     let { user, token, history, userData, onNewUser, onSignOut} = this.props;
+    const { date } = this.state;
 
     function updateInfo(token) {
       const userInput = document.getElementById('username');
@@ -24,12 +33,19 @@ export class ProfileView extends React.Component {
       }
 
       const nameChoice = userInput.value || userData.Username;
+      
       let passChoice = null;
       if (passInput.value == "") {
         passChoice = "";
       } else {
         passChoice = passInput.value;
       }
+
+      if( dateInput.value.slice(0, 4) > date) {
+        const dateErr = document.getElementById('Date');
+        return dateErr.innerText = "You are not from the future";
+      }
+
       const emailChoice = emailInput.value || userData.Email;
       const dateChoice = dateInput.value || userData.DOB;
 
@@ -63,7 +79,6 @@ export class ProfileView extends React.Component {
     }
 
     function deleteAcc(token) {
-      console.log('Not deleted yet');
       axios.delete(`https://filmquarry.herokuapp.com/users/${user}`, 
       { headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}})
       .then(response => {
@@ -79,7 +94,6 @@ export class ProfileView extends React.Component {
 
     function Date() {
       const formDate = userData.DOB;
-
       return formDate.slice(0, 10);
     }
 
@@ -148,7 +162,7 @@ export class ProfileView extends React.Component {
               <Link to={`/`}>
                 <Button className="m-3 bttn" variant="info" type="button">Go Back</Button>
               </Link>
-              <Button className="m-3 bttn" variant="info" type="button" onClick={ () => { deleteAcc(token); onSignOut(null); history.push('/'); } }>Delete Account</Button>
+              <ConfirmDel history={history} onSignOut={onSignOut} deleteAcc={deleteAcc} token={token} />
             </div>
           </form>
         </div>

@@ -3,11 +3,6 @@ import Modal from "react-bootstrap/Modal";
 import Button from 'react-bootstrap/Button';
 
 export function ConfirmDel(props) {
-  // const [history, setHistory] = useState(props.history);
-  // const [deleteAcc, setDeleteAcc] = useState(props.deleteAcc);
-  // const [token, setToken] = useState(props.token);
-  // const [onSignOut, setOnSignOut] = useState(props.onSignOut);
-
   const history = props.history;
   const deleteAcc = props.deleteAcc;
   const token = props.token;
@@ -39,18 +34,19 @@ export function ConfirmDel(props) {
       </Modal>
     );
   }
-    const [modalShow, setModalShow] = React.useState(false);
+  
+  const [modalShow, setModalShow] = React.useState(false);
 
-    return (
-      <>
-        <Button variant="info" className="mb-4" onClick={() => {setModalShow(true)}}>
-          Delete Account
-        </Button>
+  return (
+    <>
+      <Button variant="info" className="mb-4" onClick={() => {setModalShow(true)}}>
+        Delete Account
+      </Button>
 
-        <MyVerticallyCenteredModal
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
-      </>
-    );
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+    </>
+  );
 }

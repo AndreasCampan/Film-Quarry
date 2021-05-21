@@ -51,7 +51,7 @@ export class MovieCard extends React.Component {
     const whatHeart = toggleHeart2(userData, movieData._id);
 
     return (
-      <Card className="card mb-4 cardbox">
+      <Card className=" mb-4 cardbox">
         <span className="cent">
         <Card.Img className="cardimg size" variant="top" src={movieData.ImagePath} />
         </span>

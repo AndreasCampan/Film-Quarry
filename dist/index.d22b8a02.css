@@ -18,12 +18,19 @@ Form {
   text-align: center;
 }
 
-.center {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+.logo {
+  display: inline-block;
+  background-image: url("logo.2d5f43f9.png");
+  background-repeat: none;
+  background-size: 100%;
+  width: 50px;
+  height: 50px;
+  transition: all 0.8s ease-in-out;
+}
+
+.logo:hover {
+  background-image: url("logo2.9f904c07.png");
+  transform: rotate(1080deg) scale(1.2);
 }
 
 .title {
@@ -40,11 +47,13 @@ Form {
     font-size: 2.3em;
   }
 }
+
 @media all and (max-width: 320px) {
   .title {
     font-size: 2em;
   }
 }
+
 @media all and (max-width: 320px) {
   Form {
     padding: 0;
@@ -358,6 +367,7 @@ input:focus {
   cursor: pointer;
   display: inline-block;
   margin: 0 0 0 10px;
+  padding: 10px;
   background-image: url(favourite-icon.1099f380.png);
   width: 40px;
   height: 38px;
@@ -368,7 +378,7 @@ input:focus {
   0% {
     transform: scale(1);
   }
-  20% {
+  50% {
     transform: scale(0.7);
   }
   100% {
@@ -380,6 +390,7 @@ input:focus {
   cursor: pointer;
   display: inline-block;
   margin: 0 0 0 10px;
+  padding: 10px;
   background-image: url(favourite-icon.1099f380.png);
   opacity: 0.7;
   width: 40px;
@@ -390,6 +401,7 @@ input:focus {
   cursor: pointer;
   display: inline-block;
   margin: 0 0 0 10px;
+  padding: 10px;
   background-image: url(favourite-icon-faved.2b49141d.png);
   width: 40px;
   height: 38px;
@@ -400,7 +412,7 @@ input:focus {
   0% {
     transform: scale(1);
   }
-  20% {
+  50% {
     transform: scale(1.5);
   }
   100% {

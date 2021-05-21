@@ -11,7 +11,6 @@ import MoviesList from '../movies-list/movies-list';
 
 import { LoginView } from '../login-view/login-view';
 import { ProfileView } from '../profile-view/profile-view';
-// import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
@@ -69,7 +68,6 @@ class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
-      console.log('Success with getAcc');
       this.setState({
         userData: response.data
       });
@@ -232,7 +230,6 @@ class MainView extends React.Component {
                 </>
               )
           }} />   
-
         </Row>
       </Router>
     );

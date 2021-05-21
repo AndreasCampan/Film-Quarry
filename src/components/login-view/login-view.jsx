@@ -49,16 +49,20 @@ export function LoginView(props) {
         </Form.Group>
         <div id="error" className="err"></div>
         <div className="middle">
-          <Button className="m-3" variant="info" type="submit" onClick={handleSubmit}>Login</Button>
+          <Button className="mx-3 mb-3" variant="info" type="submit" onClick={handleSubmit}>Login</Button>
           <Link to={`/register`}>
-            <Button className="m-3" variant="info" type="link">Register</Button>
+            <Button className="mx-3 mb-3" variant="info" type="link">Register</Button>
           </Link>
         </div>
       </Form>
-      <p>User for testing.<br/>
+      <p className="middle">Do you want a sneak peak? </p>
+      <p>
         Username: testuser<br/>
         Password: test123
       </p>
+      <a href="https://andreascampan.github.io/AC-Portfolio" target="_blank">
+        <div className="logo"></div>
+      </a>
     </div>
   );
 }

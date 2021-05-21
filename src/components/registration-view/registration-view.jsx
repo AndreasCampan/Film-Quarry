@@ -47,6 +47,8 @@ export function RegistrationView() {
     const nameText = document.getElementById('user');
     if (!username) {
       showErrorMessage(nameText, 'Please provide a username');
+    } else if (!userInput.value.match(/^[a-z0-9]*$/i)) {
+      return showErrorMessage(nameText, 'Only numbers and letters are allowed');
     } else {
       hideError(nameText);
       return true;
@@ -100,8 +102,6 @@ export function RegistrationView() {
     let year = today.getFullYear();
     let month = today.getMonth() + 1;
     let day = today.getDate();
-
-    
 
     function dateChange(DOB) {
       let split = DOB.split("");

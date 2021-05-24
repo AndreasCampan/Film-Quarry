@@ -28,13 +28,6 @@ Form {
   transform: rotate(1080deg) scale(1.2);
 }
 
-// .center {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-// }
-
 .title {
   min-width: 260px;
   font-weight: 700;
@@ -43,6 +36,7 @@ Form {
   color: #17A2B8;
   text-align: center;
 }
+
 
 @media all and (max-width: 400px){
   .title {

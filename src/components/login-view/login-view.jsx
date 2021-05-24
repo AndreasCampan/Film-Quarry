@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
@@ -15,10 +16,12 @@ export function LoginView(props) {
     const error = document.getElementById('error');
     error.innerText = "Incorrect Username or Password";
   }
+  
 
   const handleSubmit = (e) => {
+    const showSpinner = document.getElementById('loginSpinner');
+    showSpinner.hidden = false;
     e.preventDefault();
-    /* Send a request to the server for authentication */
     axios.post('https://filmquarry.herokuapp.com/login', {
       Username: username,
       Password: password
@@ -29,7 +32,9 @@ export function LoginView(props) {
       props.loggingIn(data);
     })
     .catch(() => {
-      errorMsg();
+      const showSpinner = document.getElementById('loginSpinner');
+      setTimeout(() => {showSpinner.hidden = true, errorMsg();}, 500);
+      
     });
   };
 
@@ -49,7 +54,8 @@ export function LoginView(props) {
         </Form.Group>
         <div id="error" className="err"></div>
         <div className="middle">
-          <Button className="mx-3 mb-3" variant="info" type="submit" onClick={handleSubmit}>Login</Button>
+          <Button className="mx-3 mb-3" variant="info" type="submit" onClick={handleSubmit}>
+            <Spinner className="mx-1" id="loginSpinner" as="span" animation="border" size="sm" role="status" aria-hidden="true" hidden /> Login</Button>
           <Link to={`/register`}>
             <Button className="mx-3 mb-3" variant="info" type="link">Register</Button>
           </Link>

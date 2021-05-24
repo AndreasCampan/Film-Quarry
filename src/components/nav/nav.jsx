@@ -13,7 +13,7 @@ render() {
     <>
       <Navbar className="font-weight-bold" fixed="top" expand="md" bg="info" variant="dark">
         <div className="left">
-          <Nav.Link className="logo mr-3" href="https://andreascampan.github.io/AC-Portfolio"></Nav.Link>
+          <Nav.Link className="logo mr-3" href="https://andreascampan.github.io/AC-Portfolio" target="_blank"></Nav.Link>
           <Navbar.Brand> 
             <span className="navsize1">Film Quarry</span>
           </Navbar.Brand>
@@ -26,13 +26,11 @@ render() {
               <span className="hover ani">Movies</span>
             </Nav.Link>
 
-            {/* <Nav.Link className="text-white mx-2" href="#"><span className="hover ani">My Favs</span></Nav.Link> */}
-
-            <Nav.Link className="text-white mx-2" onClick={() => { history.push(`/users/${user}`); }}>
-              <span className="hover ani">{`${user}`}</span>
+            <Nav.Link className="text-white mx-2" onClick={() => { history.push(`/users/${user.user}`); }}>
+              <span className="hover ani">{`${user.user}`}</span>
             </Nav.Link>
             
-            <Nav.Link className="text-white mx-2" onClick={() => { onSignOut(null); history.push('/'); }}><span className="hover ani">Sign Out</span></Nav.Link>
+            <Nav.Link className="text-white mx-2" onClick={() => { onSignOut(null); }}><span className="hover ani">Sign Out</span></Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -43,5 +41,9 @@ render() {
 }
 
 Navigation.propTypes = {
-  onSignOut: PropTypes.func.isRequired
+  onSignOut: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    user: PropTypes.string.isRequired
+  }).isRequired,
+  history: PropTypes.shape().isRequired
 };

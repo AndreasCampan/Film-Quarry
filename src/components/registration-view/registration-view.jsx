@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 
 import './registration-view.scss';
@@ -45,10 +45,15 @@ export function RegistrationView() {
 
   function nameInput() {
     const nameText = document.getElementById('user');
+    const userInput = document.getElementById('username');
     if (!username) {
       showErrorMessage(nameText, 'Please provide a username');
     } else if (!userInput.value.match(/^[a-z0-9]*$/i)) {
-      return showErrorMessage(nameText, 'Only numbers and letters are allowed');
+      return showErrorMessage(nameText, 'Letters and numbers only');
+    } else if (userInput.value.length > 12) {
+      return showErrorMessage(nameText, 'Max 12 characters');
+    } else if (userInput.value.length < 5) {
+      return showErrorMessage(nameText, 'Min 5 characters');
     } else {
       hideError(nameText);
       return true;
@@ -120,6 +125,7 @@ export function RegistrationView() {
     let DOB2 = dateChange(DOB);
     let DOB3 = dateChange2(DOB2.slice(6));
 
+    console.log(year, DOB3)
     if (!DOB) {
       hideError(birthText);
       showErrorMessage(birthText, 'Please select a date');

@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Modal from "react-bootstrap/Modal";
 import Button from 'react-bootstrap/Button';
 
 export function ConfirmDel(props) {
-  const history = props.history;
   const deleteAcc = props.deleteAcc;
   const token = props.token;
-  const onSignOut = props.onSignOut;
 
   function MyVerticallyCenteredModal(props) {
     return (
@@ -27,7 +26,7 @@ export function ConfirmDel(props) {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-info" className="mx-2 px-3" onClick={() => { deleteAcc(token); onSignOut(null); history.push('/'); } }>Yes</Button>
+          <Button variant="outline-info" className="mx-2 px-3" onClick={() => { deleteAcc(token); } }>Yes</Button>
           
           <Button variant="outline-info" className="mx-2 px-3" onClick={props.onHide}>No</Button>
         </Modal.Footer>
@@ -50,3 +49,8 @@ export function ConfirmDel(props) {
     </>
   );
 }
+
+ConfirmDel.propTypes = {
+  token: PropTypes.string.isRequired,
+  deleteAcc: PropTypes.func.isRequired
+};

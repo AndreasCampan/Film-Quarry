@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Modal from "react-bootstrap/Modal";
-import Button from 'react-bootstrap/Button';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import { ConfirmDel } from '../delete-modal/delete-modal';
 
@@ -64,6 +64,8 @@ export class ProfileView extends React.Component {
         return showErrorMessage(userErr, 'Max 12 characters');
       } else if (!userInput.value.match(/^[a-z0-9]*$/i)) {
         return showErrorMessage(userErr, 'Letters and numbers only');
+      } else if (userInput.value.length >= 1 && userInput.value.length < 5 ) {
+        return showErrorMessage(userErr, 'Min 5 characters');
       } else {
         hideError(userErr);
       }
@@ -101,14 +103,13 @@ export class ProfileView extends React.Component {
       }
 
       if (passInput.value === passVerInput.value) {
-        axios.put(`https://filmquarry.herokuapp.com/users/${user}`, 
+        axios.put(`https://filmquarry.herokuapp.com/users/${user.user}`, 
         { 
           Username: nameChoice, Password: passChoice, Email: emailChoice, DOB: dateChoice 
         },
         { headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}}
         )
         .then(response => {
-          console.log('Success with updating account information');
           let userData2 = response.data;
           onNewUser(userData2);
           if (userInput.value != "") {
@@ -130,14 +131,15 @@ export class ProfileView extends React.Component {
     }
 
     function deleteAcc(token) {
-      axios.delete(`https://filmquarry.herokuapp.com/users/${user}`, 
+      axios.delete(`https://filmquarry.herokuapp.com/users/${user.user}`, 
       { headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}})
       .then(response => {
         console.log(response);
-        console.log(`${user} has been deleted`);
+        console.log(`${user.user} has been deleted`);
+        onSignOut(null);
+        history.push('/');
       })
       .catch(e => {
-        console.log('There is an error');
         console.log(e);
       })
     }
@@ -221,3 +223,14 @@ export class ProfileView extends React.Component {
     );
   }
 }
+
+ProfileView.propTypes = {
+  onSignOut: PropTypes.func.isRequired,
+  onNewUser: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    user: PropTypes.string.isRequired
+  }).isRequired,
+  userData: PropTypes.shape().isRequired,
+  token: PropTypes.string.isRequired,
+  history: PropTypes.shape().isRequired
+};

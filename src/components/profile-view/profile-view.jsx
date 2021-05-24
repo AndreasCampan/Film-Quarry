@@ -73,7 +73,7 @@ export class ProfileView extends React.Component {
       // Date of Birth logic
       const dateChoice = dateInput.value || userData.DOB.slice(0, 10);
       const dateErr = document.getElementById('Date');
-      
+
       if( dateInput.value.slice(0, 4) > year) {
         return showErrorMessage(dateErr, 'You are not from the future');
       } else if(dateChoice.length > 10) { 
@@ -113,12 +113,12 @@ export class ProfileView extends React.Component {
           let userData2 = response.data;
           onNewUser(userData2);
           
-          if (userInput.value != "") {
-            setTimeout(window.location = `/users/${userData2.Username}`, 1000);
-          }
-          if (passChoice != "") {
-            setTimeout(window.location = `/users/${userData2.Username}`, 1000);
-          }
+          // if (userInput.value != "") {
+          //   setTimeout(window.location = `/users/${userData2.Username}`, 1000);
+          // }
+          // if (passChoice != "") {
+          //   setTimeout(window.location = `/users/${userData2.Username}`, 1000);
+          // }
         })
         .catch(function (error) {
           console.log(error);

@@ -16,13 +16,14 @@ The web application will provide users with access to information about differen
 
 ### Dependencies
 1. "axios": "^0.21.1",
-2. "react": "^17.0.2",
-3. "react-bootstrap": "^1.5.2",
-4. "react-dom": "^17.0.2",
-5. "react-redux": "^7.2.4",
-6. "react-router-dom": "^5.2.0",
-7. "redux": "^4.1.0",
-8. "redux-devtools-extension": "^2.13.9"
+2. "parcel": "^2.0.0-beta.3.1",
+3. "react": "^17.0.2",
+4. "react-bootstrap": "^1.5.2",
+5. "react-dom": "^17.0.2",
+6. "react-redux": "^7.2.4",
+7. "react-router-dom": "^5.2.0",
+8. "redux": "^4.1.0",
+9. "redux-devtools-extension": "^2.13.9"
 
 ### Environment and devDep
 1. **Visual Studio Code**  v1.53.2

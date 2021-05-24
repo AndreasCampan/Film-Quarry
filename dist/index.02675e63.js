@@ -34609,6 +34609,8 @@ try {
         const dateErr = document.getElementById('Date');
         if (dateInput.value.slice(0, 4) > year) {
           return showErrorMessage(dateErr, 'You are not from the future');
+        } else if (dateChoice.length > 10) {
+          return showErrorMessage(dateErr, 'Please select a valid email');
         } else {
           hideError(dateErr);
         }
@@ -38672,7 +38674,6 @@ try {
       }
       let DOB2 = dateChange(DOB);
       let DOB3 = dateChange2(DOB2.slice(6));
-      console.log(year, DOB3);
       if (!DOB) {
         hideError(birthText);
         showErrorMessage(birthText, 'Please select a date');
@@ -38681,6 +38682,9 @@ try {
         hideError(birthText);
         showErrorMessage(birthText, 'You are not from the future!');
         return false;
+      } else if (birthText.length > 10) {
+        hideError(birthText);
+        return showErrorMessage(birthText, 'Please select a valid email');
       } else {
         hideError(birthText);
         return true;
@@ -38705,7 +38709,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 159,
+          lineNumber: 161,
           columnNumber: 5
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
@@ -38713,7 +38717,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 160,
+          lineNumber: 162,
           columnNumber: 7
         }
       }, "Create Account"), /*#__PURE__*/_reactDefault.default.createElement("form", {
@@ -38722,7 +38726,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 161,
+          lineNumber: 163,
           columnNumber: 7
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -38730,7 +38734,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 163,
+          lineNumber: 165,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("label", {
@@ -38738,7 +38742,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 164,
+          lineNumber: 166,
           columnNumber: 11
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -38746,7 +38750,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 164,
+          lineNumber: 166,
           columnNumber: 37
         }
       }, "*"), " Username:"), /*#__PURE__*/_reactDefault.default.createElement("input", {
@@ -38756,7 +38760,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 165,
+          lineNumber: 167,
           columnNumber: 11
         }
       }), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -38765,7 +38769,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 166,
+          lineNumber: 168,
           columnNumber: 11
         }
       })), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -38773,7 +38777,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 169,
+          lineNumber: 171,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("label", {
@@ -38781,7 +38785,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 170,
+          lineNumber: 172,
           columnNumber: 11
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -38789,7 +38793,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 170,
+          lineNumber: 172,
           columnNumber: 37
         }
       }, "*"), " Password:"), /*#__PURE__*/_reactDefault.default.createElement("input", {
@@ -38799,7 +38803,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 171,
+          lineNumber: 173,
           columnNumber: 11
         }
       }), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -38808,7 +38812,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 172,
+          lineNumber: 174,
           columnNumber: 11
         }
       })), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -38816,7 +38820,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 175,
+          lineNumber: 177,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("label", {
@@ -38824,7 +38828,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 176,
+          lineNumber: 178,
           columnNumber: 11
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -38832,7 +38836,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 176,
+          lineNumber: 178,
           columnNumber: 34
         }
       }, "*"), " Email:"), /*#__PURE__*/_reactDefault.default.createElement("input", {
@@ -38842,7 +38846,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 177,
+          lineNumber: 179,
           columnNumber: 11
         }
       }), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -38851,7 +38855,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 178,
+          lineNumber: 180,
           columnNumber: 11
         }
       })), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -38859,7 +38863,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 181,
+          lineNumber: 183,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("label", {
@@ -38867,7 +38871,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 182,
+          lineNumber: 184,
           columnNumber: 11
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -38875,7 +38879,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 182,
+          lineNumber: 184,
           columnNumber: 32
         }
       }, "*"), " Date of Birth:"), /*#__PURE__*/_reactDefault.default.createElement("input", {
@@ -38886,7 +38890,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 183,
+          lineNumber: 185,
           columnNumber: 11
         }
       }), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -38895,7 +38899,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 184,
+          lineNumber: 186,
           columnNumber: 11
         }
       })), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -38903,7 +38907,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 187,
+          lineNumber: 189,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapButtonDefault.default, {
@@ -38914,7 +38918,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 188,
+          lineNumber: 190,
           columnNumber: 11
         }
       }, "Create"), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Link, {
@@ -38922,7 +38926,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 189,
+          lineNumber: 191,
           columnNumber: 11
         }
       }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapButtonDefault.default, {
@@ -38932,7 +38936,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 190,
+          lineNumber: 192,
           columnNumber: 13
         }
       }, "Go Back")))))
@@ -38948,7 +38952,7 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","axios":"7rA65","react-router-dom":"1PMSK","./registration-view.scss":"22HWg","@parcel/transformer-js/lib/esmodule-helpers.js":"4MPvn","../../../../../../../AppData/Roaming/nvm/v15.12.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"R6Gyg","react-bootstrap/Button":"1ru0l"}],"22HWg":[function() {},{}],"4uNxJ":[function(require,module,exports) {
+},{"react":"3b2NM","react-bootstrap/Button":"1ru0l","axios":"7rA65","react-router-dom":"1PMSK","./registration-view.scss":"22HWg","@parcel/transformer-js/lib/esmodule-helpers.js":"4MPvn","../../../../../../../AppData/Roaming/nvm/v15.12.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"R6Gyg"}],"22HWg":[function() {},{}],"4uNxJ":[function(require,module,exports) {
 var helpers = require("../../../../../../../AppData/Roaming/nvm/v15.12.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -49797,7 +49801,7 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap/Button":"1ru0l","react-bootstrap/Card":"1CZWQ","react-router-dom":"1PMSK","./movie-card.scss":"43n4t","@parcel/transformer-js/lib/esmodule-helpers.js":"4MPvn","../../../../../../../AppData/Roaming/nvm/v15.12.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"R6Gyg","axios":"7rA65"}],"43n4t":[function() {},{}],"7panR":[function(require,module,exports) {
+},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap/Button":"1ru0l","react-bootstrap/Card":"1CZWQ","axios":"7rA65","react-router-dom":"1PMSK","./movie-card.scss":"43n4t","@parcel/transformer-js/lib/esmodule-helpers.js":"4MPvn","../../../../../../../AppData/Roaming/nvm/v15.12.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"R6Gyg"}],"43n4t":[function() {},{}],"7panR":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, '__esModule', {
   value: true

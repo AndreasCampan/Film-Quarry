@@ -73,14 +73,14 @@ export class ProfileView extends React.Component {
       // Date of Birth logic
       const dateChoice = dateInput.value || userData.DOB;
       const dateErr = document.getElementById('Date');
-
+  
       if( dateInput.value.slice(0, 4) > year) {
         return showErrorMessage(dateErr, 'You are not from the future');
+      } else if(dateChoice.length > 10) { 
+        return showErrorMessage(dateErr, 'Please select a valid email');
       } else {
         hideError(dateErr);
       }
-
-      
 
       // Email logic
       const emailChoice = emailInput.value || userData.Email;
@@ -200,7 +200,7 @@ export class ProfileView extends React.Component {
 
             <div className="input-wrap">
               <label htmlFor="email">Email:</label>
-              <input id="email" type="email" placeholder="New Email"/>
+              <input id="email" type="email" placeholder="New Email" />
               <div id="email-err" className="error"></div>
             </div>
 

@@ -43,18 +43,6 @@ Form {
   text-align: center;
 }
 
-@media (hover: none) and (pointer: coarse) {
-  .logo, .logo:visited {
-    display: inline-block;
-    position: relative;
-    background-image: url("logo.2d5f43f9.png");
-    background-repeat: none;
-    background-size: 100%;
-    width: 50px;
-    height: 50px;
-  }
-}
-
 @media all and (max-width: 400px) {
   .title {
     font-size: 2.3em;

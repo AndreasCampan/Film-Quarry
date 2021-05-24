@@ -78,7 +78,7 @@ export function RegistrationView() {
       showErrorMessage(emailText, 'Please provide a valid email');
     } else if (email.indexOf('.') === -1) {
       showErrorMessage(emailText, 'Please provide a valid email');
-    } else {
+    }  else {
       hideError(emailText);
       return true;
     }
@@ -125,7 +125,6 @@ export function RegistrationView() {
     let DOB2 = dateChange(DOB);
     let DOB3 = dateChange2(DOB2.slice(6));
 
-    console.log(year, DOB3)
     if (!DOB) {
       hideError(birthText);
       showErrorMessage(birthText, 'Please select a date');
@@ -134,6 +133,9 @@ export function RegistrationView() {
       hideError(birthText);
       showErrorMessage(birthText, 'You are not from the future!');
       return false;
+    } else if (birthText.length > 10) { 
+      hideError(birthText);
+      return showErrorMessage(birthText, 'Please select a valid email');
     } else {
       hideError(birthText);
       return true; 

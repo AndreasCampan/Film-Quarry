@@ -93,7 +93,6 @@ export class ProfileView extends React.Component {
         hideError(emailErr);
       }
       
-      
       // Password logic
       let passChoice = null;
       if (passInput.value == "") {
@@ -113,12 +112,12 @@ export class ProfileView extends React.Component {
           let userData2 = response.data;
           onNewUser(userData2);
           
-          // if (userInput.value != "") {
-          //   setTimeout(window.location = `/users/${userData2.Username}`, 1000);
-          // }
-          // if (passChoice != "") {
-          //   setTimeout(window.location = `/users/${userData2.Username}`, 1000);
-          // }
+          if (userInput.value != "") {
+            setTimeout(window.location = `/users/${userData2.Username}`, 1000);
+          }
+          if (passChoice != "") {
+            setTimeout(window.location = `/users/${userData2.Username}`, 1000);
+          }
         })
         .catch(function (error) {
           console.log(error);
@@ -144,7 +143,6 @@ export class ProfileView extends React.Component {
         console.log(e);
       })
     }
-    
 
     function presentDate() {
       const formDate = userData.DOB;

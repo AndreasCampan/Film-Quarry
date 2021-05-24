@@ -5,7 +5,7 @@
 Hello and welcome to **Film Quarry** ! My objective was to build a client side website using React to display the data from my backend Movie API! The project utilizes a single-page application with state routing to navigate between views and share URLs.
 
 # What will it do?
-The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
+The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies. Users can also use a search bar to search for a movie title
 
 
 # Stack, Dependencies, Environment, Hosting

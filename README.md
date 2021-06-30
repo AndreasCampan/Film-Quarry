@@ -25,7 +25,7 @@ The web application will provide users with access to information about differen
 
 # Project Status
 
-THe frontend website is currently being developed using React. The backend is complete, check out my backend repo at https://github.com/AndreasCampan/filmQuarry-API.
+The Project is complete. Check out my backend repo at https://github.com/AndreasCampan/filmQuarry-API.
 
 
 

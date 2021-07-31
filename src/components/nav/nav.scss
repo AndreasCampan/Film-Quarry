@@ -10,8 +10,21 @@
  justify-content: space-between;
  align-items: center;
 }
+
+.navlogo {
+  display: inline-block;
+  position: relative;
+  background-image: url("../../../images/logo.png");
+  background-repeat: none;
+  background-size: 100%;
+  width: 50px;
+  height: 50px;
+  transition: all 0.8s ease-in-out;
+}
+
 .navsize1 {
   font-size: 1.7em;
+  color: #fff;
 }
 
 .navsize2 {

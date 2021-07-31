@@ -1,6 +1,46 @@
+.movie-view {
+  font-size: 1.1em;
+}
+
 .cent {
   text-align: center;
 }
+
 .poster {
-  width: 350px;
+  width: 250px;
+}
+
+.link {
+  color: #17A2B8;
+  text-decoration: none;
+  outline: none;
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+.link:hover {
+  color: #ad631d;
+  text-decoration: none;
+  outline: none;
+  margin-left: 8px;
+}
+
+@media all and (max-width: 360px) {
+  .movie-view {
+    font-size: 0.9em;
+  }
+
+  .movie-name {
+    font-size: 1.3em;
+    font-weight: 600;
+  }
+
+  .link {
+    margin-left: 4px;
+
+  }
+  
+  .link:hover {
+    margin-left: 4px;
+  }
 }

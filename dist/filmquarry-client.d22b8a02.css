@@ -132,17 +132,7 @@ input:focus {
 }
 
 .cent {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.cent2 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
+  text-align: center;
 }
 
 .cardbox {
@@ -156,67 +146,7 @@ input:focus {
 }
 
 .favourites {
-  cursor: pointer;
-  display: inline-block;
-  margin: 0 0 0 10px;
-  background-image: url(favourite-icon.1099f380.png);
-  width: 40px;
-  height: 38px;
-  animation: fav2 1s ease;
-}
-
-@keyframes fav2 {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.7);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.favourites:hover {
-  cursor: pointer;
-  display: inline-block;
-  margin: 0 0 0 10px;
-  background-image: url(favourite-icon.1099f380.png);
-  opacity: 0.7;
-  width: 40px;
-  height: 38px;
-}
-
-.favourites-active {
-  cursor: pointer;
-  display: inline-block;
-  margin: 0 0 0 10px;
-  background-image: url(favourite-icon-faved.2b49141d.png);
-  width: 40px;
-  height: 38px;
-  animation: fav 1s ease;
-}
-
-@keyframes fav {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.favourites-active:hover {
-  cursor: pointer;
-  display: inline-block;
-  margin: 0 0 0 10px;
-  background-image: url(favourite-icon-faved.2b49141d.png);
-  opacity: 0.7;
-  width: 40px;
-  height: 38px;
+  background-image: url(../../);
 }
 
 @media all and (max-width: 990px) {
@@ -431,4 +361,4 @@ input:focus {
     transform: rotate(360deg);
   }
 }
-/*# sourceMappingURL=index.d22b8a02.css.map */
+/*# sourceMappingURL=filmquarry-client.d22b8a02.css.map */

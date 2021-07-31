@@ -1,9 +1,13 @@
-.center {
+.centerProfile {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: center;
   align-items: center;
+}
+
+.box {
+  width: 500px;
+  overflow-wrap: break-word;
 }
 
 .form {
@@ -16,8 +20,11 @@
 .title {
   min-width: 260px;
   font-weight: 700;
-  font-size: 2.4em;
   margin-bottom: 1em;
+  color: #17A2B8;
+}
+
+.title-2 {
   color: #17A2B8;
 }
 
@@ -25,10 +32,6 @@
   margin-bottom: 2px;
 }
 
-.aster{
-  color: red;
-  font-size: 1em;
-}
 
 .error {
   color: red;
@@ -62,13 +65,14 @@ input:focus {
 }
 
 @media all and (max-width: 400px){
-  .title {
-    font-size: 2em;
+  .title-2 {
+    font-size: 1.4em;
   }
 }
 
 @media all and (max-width: 320px){
-  .title {
-    font-size: 1.6em;
+
+  .title-2 {
+    font-size: 1.2em;
   }
 }

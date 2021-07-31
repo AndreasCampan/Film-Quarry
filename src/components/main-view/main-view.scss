@@ -1,3 +1,31 @@
-.main-view {
-  margin-top: 100px;
+
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  font-size: 1.3em;
+}
+
+.spinner {
+  content: " ";
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 50%;
+  border: 5px solid #17A2B8;
+  border-color: #17A2B8  #17A2B8 transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

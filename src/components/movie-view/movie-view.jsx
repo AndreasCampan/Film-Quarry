@@ -1,42 +1,52 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 import "./movie-view.scss"
+
 export class MovieView extends React.Component {
   render() {
-    const { movieData2, onBackClick } = this.props;
+    const { movieData } = this.props;
 
     return (
-
       <div className="movie-view">
         <div className="movie-poster cent">
-          <img className="poster" src={movieData2.ImagePath} />
+          <img className="poster" src={movieData.ImagePath} />
         </div>
-        <div className="movie-title cent my-5">
-          <h2>{movieData2.Title}</h2>
+        <div className="movie-title cent my-4">
+          <h2 className="movie-name">{movieData.Title}</h2>
         </div>
-        <div className="movie-description my-2">
+        <div className="my-3">
           <span className="label font-weight-bold">Description: </span>
-          <span className="value">{movieData2.Description}</span>
+          <span className="value">{movieData.Description}</span>
         </div>
-        <div className="movie-genre my-2">
+        <div className="my-3">
           <span className="label font-weight-bold">Genre: </span>
-          <span className="value">{movieData2.Genre.Name}</span>
+          <span className="value">{movieData.Genre.Name}
+          <Link className="link" to={`/genre/${movieData.Genre.Name}`}>
+            <span className="link">Show more</span>
+          </Link>
+          </span>
         </div>
-        <div className="movie-director my-2">
+        <div className="my-3">
           <span className="label font-weight-bold">Director: </span>
-          <span className="value">{movieData2.Director.Name}</span>
+          <span className="value">{movieData.Director.Name}
+            <Link className="link" to={`/directors/${movieData.Director.Name}`}>
+              <span className="link">Show more</span>
+            </Link>
+          </span>
         </div>
-        <Button onClick={() => { onBackClick(null); }} variant="info" className="my-3">Back</Button>
-
+        <Link to={`/`}>
+          <Button variant="info" className="my-3">Back</Button>
+        </Link>
       </div>
     );
   }
 }
 
 MovieView.propTypes = {
-  movieData2: PropTypes.shape({
+  movieData: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired,
@@ -46,6 +56,5 @@ MovieView.propTypes = {
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired
     })
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired
+  }).isRequired
 };

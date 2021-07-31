@@ -1,0 +1,32 @@
+.size {
+  max-width: 250px;
+  height: 400px;
+}
+
+.cent {
+  text-align: center;
+}
+
+.cardbox {
+  height: 96%;
+}
+
+.card-space {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+@media all and (max-width: 990px){
+  .size {
+    max-width: 250px;
+    height: 340px;
+  }
+}
+
+@media all and (max-width: 766px){
+  .size {
+    max-width: 220px;
+    height: 340px;
+  }
+}

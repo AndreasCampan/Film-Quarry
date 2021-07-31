@@ -1,15 +1,53 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
+
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
+import { ConfirmDel } from '../delete-modal/delete-modal';
 
 import './profile-view.scss';
 
 export class ProfileView extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      year: new Date().getFullYear(),
+      month: new Date().getMonth() + 1,
+      day: new Date().getDate()
+    };
+  }
 
   render() {
     let { user, token, history, userData, onNewUser, onSignOut} = this.props;
+    let { year, month, day } = this.state;
+    
+    // Date of Birth picker max setting
+    function datePicker() {
+      if(month < 10) {
+        month = '0' + month.toString();
+      }
+      if(day < 10) {
+        day = '0' + day.toString();
+      }
+      let MaxDate = `${year}-${month}-${day}`;
+      return MaxDate;
+    }
+
+    function hideError(input) {
+      const wrapper = input.parentElement;
+      const text = wrapper.querySelector('.error');
+      text.innerText = ' '
+    }
+    
+    function showErrorMessage(input, message) {
+      const wrapper = input.parentElement;
+      const text = wrapper.querySelector('.error');
+    
+      if (message) {
+        text.innerText = message;
+      }
+    }
 
     function updateInfo(token) {
       const userInput = document.getElementById('username');
@@ -18,37 +56,67 @@ export class ProfileView extends React.Component {
       const emailInput = document.getElementById('email');
       const dateInput = document.getElementById('DOB');
 
+      // Username logic
+      const nameChoice = userInput.value || userData.Username;
+      const userErr = document.getElementById('user');
+
       if (userInput.value.length > 12) {
-        const userErr = document.getElementById('user');
-        return userErr.innerText = "Username can only be 12 characters";
+        return showErrorMessage(userErr, 'Max 12 characters');
+      } else if (!userInput.value.match(/^[a-z0-9]*$/i)) {
+        return showErrorMessage(userErr, 'Letters and numbers only');
+      } else if (userInput.value.length >= 1 && userInput.value.length < 5 ) {
+        return showErrorMessage(userErr, 'Min 5 characters');
+      } else {
+        hideError(userErr);
       }
 
-      const nameChoice = userInput.value || userData.Username;
+      // Date of Birth logic
+      const dateChoice = dateInput.value || userData.DOB.slice(0, 10);
+      const dateErr = document.getElementById('Date');
+
+      if( dateInput.value.slice(0, 4) > year) {
+        return showErrorMessage(dateErr, 'You are not from the future');
+      } else if(dateChoice.length > 10) { 
+        return showErrorMessage(dateErr, 'Please select a valid email');
+      } else {
+        hideError(dateErr);
+      }
+
+      // Email logic
+      const emailChoice = emailInput.value || userData.Email;
+      const emailErr = document.getElementById('email');
+      if (emailChoice.indexOf('@') === -1) {
+        showErrorMessage(emailErr, 'Please provide a valid email');
+      } else if (emailChoice.indexOf('.') === -1) {
+        showErrorMessage(emailErr, 'Please provide a valid email');
+      } else {
+        hideError(emailErr);
+      }
+      
+      // Password logic
       let passChoice = null;
       if (passInput.value == "") {
         passChoice = "";
       } else {
         passChoice = passInput.value;
       }
-      const emailChoice = emailInput.value || userData.Email;
-      const dateChoice = dateInput.value || userData.DOB;
 
       if (passInput.value === passVerInput.value) {
-        axios.put(`https://filmquarry.herokuapp.com/users/${user}`, 
+        axios.put(`https://filmquarry.herokuapp.com/users/${user.user}`, 
         { 
           Username: nameChoice, Password: passChoice, Email: emailChoice, DOB: dateChoice 
         },
         { headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}}
         )
         .then(response => {
-          console.log('Success with updating account information');
           let userData2 = response.data;
           onNewUser(userData2);
+          
           if (userInput.value != "") {
-            window.location = `/users/${userData2.Username}`;
+            setTimeout(window.location = `/users/${userData2.Username}`, 1000);
           }
           if (passChoice != "") {
-            window.location = `/users/${userData2.Username}`;
+            setTimeout(window.location = `/users/${userData2.Username}`, 1000);
           }
         })
         .catch(function (error) {
@@ -63,23 +131,21 @@ export class ProfileView extends React.Component {
     }
 
     function deleteAcc(token) {
-      console.log('Not deleted yet');
-      axios.delete(`https://filmquarry.herokuapp.com/users/${user}`, 
+      axios.delete(`https://filmquarry.herokuapp.com/users/${user.user}`, 
       { headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}})
       .then(response => {
         console.log(response);
-        console.log(`${user} has been deleted`);
+        console.log(`${user.user} has been deleted`);
+        onSignOut(null);
+        history.push('/');
       })
       .catch(e => {
-        console.log('There is an error');
         console.log(e);
       })
     }
-    
 
-    function Date() {
+    function presentDate() {
       const formDate = userData.DOB;
-
       return formDate.slice(0, 10);
     }
 
@@ -92,7 +158,7 @@ export class ProfileView extends React.Component {
           <div className="align-text-left">
             <div className=" my-2"><strong>Username:</strong> {`${userData.Username}`}</div>
             <div className=" my-2"><strong>Email:</strong> {`${userData.Email}`}</div>
-            <div className=" my-2"><strong>Date of Birth:</strong> {`${Date()}`}</div>
+            <div className=" my-2"><strong>Date of Birth:</strong> {`${presentDate()}`}</div>
           </div>
             <h2 className="title-2 my-4">Update Information</h2>
             <div>The testuser account info cannot be updated!</div>
@@ -108,7 +174,7 @@ export class ProfileView extends React.Component {
         <div className="align-text-left">
           <div className=" my-2"><strong>Username:</strong> {`${userData.Username}`}</div>
           <div className=" my-2"><strong>Email:</strong> {`${userData.Email}`}</div>
-          <div className=" my-2"><strong>Date of Birth:</strong> {`${Date()}`}</div>
+          <div className=" my-2"><strong>Date of Birth:</strong> {`${presentDate()}`}</div>
         </div>
           <h2 className="title-2 my-4">Update Information</h2>
           <form noValidate className="form">
@@ -133,13 +199,13 @@ export class ProfileView extends React.Component {
 
             <div className="input-wrap">
               <label htmlFor="email">Email:</label>
-              <input id="email" type="email" placeholder="New Email"/>
+              <input id="email" type="email" placeholder="New Email" />
               <div id="email-err" className="error"></div>
             </div>
 
             <div className="input-wrap">
               <label htmlFor="DOB">Date of Birth:</label>
-              <input id="DOB" type="Date"/>
+              <input id="DOB" type="Date" max={datePicker()}/>
               <div id="Date" className="error"></div>
             </div>
             
@@ -148,7 +214,7 @@ export class ProfileView extends React.Component {
               <Link to={`/`}>
                 <Button className="m-3 bttn" variant="info" type="button">Go Back</Button>
               </Link>
-              <Button className="m-3 bttn" variant="info" type="button" onClick={ () => { deleteAcc(token); onSignOut(null); history.push('/'); } }>Delete Account</Button>
+              <ConfirmDel history={history} onSignOut={onSignOut} deleteAcc={deleteAcc} token={token} />
             </div>
           </form>
         </div>
@@ -156,3 +222,14 @@ export class ProfileView extends React.Component {
     );
   }
 }
+
+ProfileView.propTypes = {
+  onSignOut: PropTypes.func.isRequired,
+  onNewUser: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    user: PropTypes.string.isRequired
+  }).isRequired,
+  userData: PropTypes.shape().isRequired,
+  token: PropTypes.string.isRequired,
+  history: PropTypes.shape().isRequired
+};

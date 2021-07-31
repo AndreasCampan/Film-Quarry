@@ -1,8 +1,9 @@
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import axios from 'axios';
+
 import { Link } from "react-router-dom";
 
 import './movie-card.scss';
@@ -22,24 +23,21 @@ export class MovieCard extends React.Component {
 
     function favourite(movieData, user, token, userData){
       if (userData.movieFav.includes(movieData._id)) {
-        console.log('Deleting');
-        axios.delete(`https://filmquarry.herokuapp.com/users/${user}/Movies/${movieData._id}`,
+        axios.delete(`https://filmquarry.herokuapp.com/users/${user.user}/Movies/${movieData._id}`,
         { headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}})
         .then(response => {
-          onGetAcc();
+          onGetAcc(token, user);
         })
         .catch(e => {
-          console.log('There is an error');
           console.log(e);
         })
       } else {
-        console.log('Adding');
-        axios.patch(`https://filmquarry.herokuapp.com/users/${user}/Movies/${movieData._id}`, { 
-          Username: user
+        axios.patch(`https://filmquarry.herokuapp.com/users/${user.user}/Movies/${movieData._id}`, { 
+          Username: user.user
         },
         { headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}})
         .then((response) => {
-          onGetAcc();
+          onGetAcc(token, user);
         })
         .catch(e => {
           console.log('There is an error');
@@ -51,7 +49,7 @@ export class MovieCard extends React.Component {
     const whatHeart = toggleHeart2(userData, movieData._id);
 
     return (
-      <Card className="card mb-4 cardbox">
+      <Card className=" mb-4 cardbox">
         <span className="cent">
         <Card.Img className="cardimg size" variant="top" src={movieData.ImagePath} />
         </span>
@@ -76,5 +74,11 @@ MovieCard.propTypes = {
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  user: PropTypes.shape({
+    user: PropTypes.string.isRequired
+  }).isRequired,
+  userData: PropTypes.shape().isRequired,
+  token: PropTypes.string.isRequired,
+  onGetAcc: PropTypes.func.isRequired
 };

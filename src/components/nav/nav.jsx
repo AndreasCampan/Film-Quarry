@@ -14,9 +14,7 @@ render() {
       <Navbar className="font-weight-bold" fixed="top" expand="md" bg="info" variant="dark">
         <div className="left">
           <Nav.Link className="hover navsize1" onClick={() => { history.push(`/movies`); }}>Film Quarry</Nav.Link>
-
         </div>
-
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
           <Nav className="navsize2">
